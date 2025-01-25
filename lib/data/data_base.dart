@@ -1,9 +1,7 @@
 class User{
-  String user ;
-  String password ;
-  User({
-    required this.user , required this.password
-});
+  String? user ;
+  String? password ;
+
 }
 
-List list = [];
+List <User> list = [];

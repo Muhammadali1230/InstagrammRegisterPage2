@@ -13,6 +13,8 @@ class RegisterPage extends StatefulWidget {
 TextEditingController _controllerUser = TextEditingController();
 TextEditingController _controllerPassword = TextEditingController();
 class _RegisterPageState extends State<RegisterPage> {
+  User users = User();
+  String error = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,13 +62,20 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               InkWell(
                 onTap: (){
-                  if(list.length==0){
+                  if(( _controllerPassword.text.isNotEmpty&& _controllerUser.text.isNotEmpty)&& (list.isEmpty || list.any((e) => e.user != _controllerUser) )){
+                    users.user=_controllerUser.toString();
+                    users.password = _controllerPassword.toString();
+                    list.add(users);
                     Navigator.pushReplacement(
 
                       context,
                       MaterialPageRoute(builder: (context) => SwitchAcc()),
                     );
 
+                  }else{
+                    setState(() {
+                      error='user yoki password kiritilmadi';
+                    });
                   }
                 },
                 child:
@@ -83,8 +92,9 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                 ),),
+              Text(error , style: TextStyle(fontSize: 14),),
               SizedBox(
-                height: 80,
+                height: 60,
               )
             ],
           ),
