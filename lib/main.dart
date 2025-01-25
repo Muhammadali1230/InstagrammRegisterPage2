@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_register1/home_page.dart';
+import 'package:instagram_register1/switch_acc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomePage(),
+      home: SwitchAcc(),
     );
   }
 }

@@ -8,12 +8,20 @@ class HomePage extends StatefulWidget {
   @override
   State<HomePage> createState() => _HomePageState();
 }
+dynamic user = '';
+dynamic password = '';
 
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back_ios)),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -34,7 +42,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Text(
-              'jacob_w',
+              user,
               style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
             ),
             SizedBox(
