@@ -13,19 +13,17 @@ class _ErrorPageState extends State<ErrorPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
       ),
       body: Container(
-        color: Colors.red,
         width: double.infinity,
         height: double.infinity,
         child: Center(child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Parol yoki login \n noto'g'ri \n qayta tekshiring" , style: TextStyle(
+            Text("Parol yoki login \n       noto'g'ri \nqayta tekshiring" , style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.w700,
-                color: Colors.yellow
+                color: Colors.red
             ),),
             InkWell(
               splashColor: Colors.blueAccent,

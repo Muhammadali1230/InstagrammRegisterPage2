@@ -13,7 +13,7 @@ class SwitchAcc extends StatefulWidget {
 }
 TextEditingController _controllerUser = TextEditingController();
 TextEditingController _controllerPassword = TextEditingController();
-
+int index =-1;
 class _SwitchAccState extends State<SwitchAcc> {
   @override
   Widget build(BuildContext context) {
@@ -81,7 +81,34 @@ class _SwitchAccState extends State<SwitchAcc> {
               ),
           InkWell(
             onTap: (){
-              if(list.length==0){
+              if(listUser.length==0){
+                Navigator.pushReplacement(
+
+                  context,
+                  MaterialPageRoute(builder: (context) => ErrorPage()),
+                );
+
+
+              }else if(listUser.contains(_controllerUser.text)){
+                index=listUser.indexOf(_controllerUser.text);
+               if(listPassword[index]==_controllerPassword.text){
+                 Navigator.pushReplacement(
+
+                   context,
+                   MaterialPageRoute(builder: (context) => HomePage()),
+                 );
+
+               }
+               else{
+                 Navigator.pushReplacement(
+
+                   context,
+                   MaterialPageRoute(builder: (context) => ErrorPage()),
+                 );
+
+               }
+              }
+              else{
                 Navigator.pushReplacement(
 
                   context,

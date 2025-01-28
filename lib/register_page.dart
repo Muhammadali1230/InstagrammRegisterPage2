@@ -13,7 +13,7 @@ class RegisterPage extends StatefulWidget {
 TextEditingController _controllerUser = TextEditingController();
 TextEditingController _controllerPassword = TextEditingController();
 class _RegisterPageState extends State<RegisterPage> {
-  User users = User();
+
   String error = "";
   @override
   Widget build(BuildContext context) {
@@ -62,10 +62,24 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               InkWell(
                 onTap: (){
-                  if(( _controllerPassword.text.isNotEmpty&& _controllerUser.text.isNotEmpty)&& (list.isEmpty || list.any((e) => e.user != _controllerUser) )){
-                    users.user=_controllerUser.toString();
-                    users.password = _controllerPassword.toString();
-                    list.add(users);
+                  if( _controllerPassword.text.isEmpty){
+                    setState(() {
+                      error="Password kiritilmadi";
+                    });
+                  }
+                  else if(
+                  _controllerUser.text.isEmpty
+                  ){
+                    setState(() {
+                      error="user kiritilmadi";
+                    });
+                  }
+                  // list.any((e) => e.user != _controllerUser
+                else  if( !listUser.contains(_controllerUser.text)){
+                    String user =_controllerUser.text;
+                    String password = _controllerPassword.text;
+                    listUser.add(user);
+                    listPassword.add(password);
                     Navigator.pushReplacement(
 
                       context,
@@ -74,7 +88,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
                   }else{
                     setState(() {
-                      error='user yoki password kiritilmadi';
+                      error="ushbu user oldin ishlatilgan ";
                     });
                   }
                 },
